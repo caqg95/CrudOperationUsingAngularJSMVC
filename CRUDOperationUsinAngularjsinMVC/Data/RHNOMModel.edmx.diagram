@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6e67ec2731e44223a790cd7bcf8a19d5" Name="Diagram1">
+        <EntityTypeShape EntityType="RHNOMModel.tb_cat_cargo" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RHNOMModel.tb_cat_lugar" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RHNOMModel.tb_msc_contrato" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RHNOMModel.tb_msc_empleado" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RHNOMModel.tb_msc_expediente" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RHNOMModel.tb_cat_cargo_nivel" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="RHNOMModel.FK_tb_cat_lugares_tb_cat_lugares" ManuallyRouted="false" />
+        <AssociationConnector Association="RHNOMModel.FK_tb_msc_expediente_tb_cat_lugares" ManuallyRouted="false" />
+        <AssociationConnector Association="RHNOMModel.FK_tb_msc_contrato_tb_msc_empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="RHNOMModel.FK_tb_msc_empleado_tb_msc_empleado" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

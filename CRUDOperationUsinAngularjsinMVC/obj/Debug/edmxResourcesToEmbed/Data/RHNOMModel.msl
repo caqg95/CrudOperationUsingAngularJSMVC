@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RHNOMModelStoreContainer" CdmEntityContainer="RHNOMEntities">
+    <EntitySetMapping Name="tb_cat_cargo">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_cat_cargo">
+        <MappingFragment StoreEntitySet="tb_cat_cargo">
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="desc_cargo" ColumnName="desc_cargo" />
+          <ScalarProperty Name="tipo_puesto" ColumnName="tipo_puesto" />
+          <ScalarProperty Name="periodo_prueba" ColumnName="periodo_prueba" />
+          <ScalarProperty Name="periodo_puesto" ColumnName="periodo_puesto" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="tipo_operativo" ColumnName="tipo_operativo" />
+          <ScalarProperty Name="aut_acciones_p" ColumnName="aut_acciones_p" />
+          <ScalarProperty Name="comision" ColumnName="comision" />
+          <ScalarProperty Name="pago_vac_automatica" ColumnName="pago_vac_automatica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cat_lugar">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_cat_lugar">
+        <MappingFragment StoreEntitySet="tb_cat_lugar">
+          <ScalarProperty Name="id_lugar" ColumnName="id_lugar" />
+          <ScalarProperty Name="nom_lugar" ColumnName="nom_lugar" />
+          <ScalarProperty Name="id_lugar_sup" ColumnName="id_lugar_sup" />
+          <ScalarProperty Name="tipo_lugar" ColumnName="tipo_lugar" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_msc_contrato">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_msc_contrato">
+        <MappingFragment StoreEntitySet="tb_msc_contrato">
+          <ScalarProperty Name="id_contrato" ColumnName="id_contrato" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="periodo_prueba" ColumnName="periodo_prueba" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="id_nivel" ColumnName="id_nivel" />
+          <ScalarProperty Name="pago_vacaciones" ColumnName="pago_vacaciones" />
+          <ScalarProperty Name="id_tipo_pago" ColumnName="id_tipo_pago" />
+          <ScalarProperty Name="confirmado" ColumnName="confirmado" />
+          <ScalarProperty Name="id_contrato_sup" ColumnName="id_contrato_sup" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_msc_empleado">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_msc_empleado">
+        <MappingFragment StoreEntitySet="tb_msc_empleado">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_expediente" ColumnName="id_expediente" />
+          <ScalarProperty Name="acciones_personal" ColumnName="acciones_personal" />
+          <ScalarProperty Name="id_jefe" ColumnName="id_jefe" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="firma" ColumnName="firma" />
+          <ScalarProperty Name="num_cuenta" ColumnName="num_cuenta" />
+          <ScalarProperty Name="id_banco" ColumnName="id_banco" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_msc_expediente">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_msc_expediente">
+        <MappingFragment StoreEntitySet="tb_msc_expediente">
+          <ScalarProperty Name="id_expediente" ColumnName="id_expediente" />
+          <ScalarProperty Name="nom1" ColumnName="nom1" />
+          <ScalarProperty Name="nom2" ColumnName="nom2" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="seguro" ColumnName="seguro" />
+          <ScalarProperty Name="id_estado_civil" ColumnName="id_estado_civil" />
+          <ScalarProperty Name="lugar_nacimiento" ColumnName="lugar_nacimiento" />
+          <ScalarProperty Name="id_lugar" ColumnName="id_lugar" />
+          <ScalarProperty Name="id_nacionalidad" ColumnName="id_nacionalidad" />
+          <ScalarProperty Name="id_nivel_acad" ColumnName="id_nivel_acad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="id_profesion" ColumnName="id_profesion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="peso" ColumnName="peso" />
+          <ScalarProperty Name="altura" ColumnName="altura" />
+          <ScalarProperty Name="senas_particulares" ColumnName="senas_particulares" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="id_daem" ColumnName="id_daem" />
+          <ScalarProperty Name="id_licencia" ColumnName="id_licencia" />
+          <ScalarProperty Name="id_vehiculo" ColumnName="id_vehiculo" />
+          <ScalarProperty Name="talla_pantalon" ColumnName="talla_pantalon" />
+          <ScalarProperty Name="talla_camisa" ColumnName="talla_camisa" />
+          <ScalarProperty Name="talla_botas" ColumnName="talla_botas" />
+          <ScalarProperty Name="id_acreditacion_daem" ColumnName="id_acreditacion_daem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cat_cargo_nivel">
+      <EntityTypeMapping TypeName="RHNOMModel.tb_cat_cargo_nivel">
+        <MappingFragment StoreEntitySet="tb_cat_cargo_nivel">
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="id_nivel" ColumnName="id_nivel" />
+          <ScalarProperty Name="cant_puesto" ColumnName="cant_puesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RHNOMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tb_cat_cargo">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+    </Key>
+    <Property Name="id_cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="desc_cargo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipo_puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="periodo_prueba" Type="Int32" />
+    <Property Name="periodo_puesto" Type="Int32" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <Property Name="tipo_operativo" Type="Boolean" />
+    <Property Name="aut_acciones_p" Type="Boolean" />
+    <Property Name="comision" Type="Boolean" />
+    <Property Name="pago_vac_automatica" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tb_cat_lugar">
+    <Key>
+      <PropertyRef Name="id_lugar" />
+    </Key>
+    <Property Name="id_lugar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_lugar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_lugar_sup" Type="Int32" />
+    <Property Name="tipo_lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tb_cat_lugar1" Relationship="Self.FK_tb_cat_lugares_tb_cat_lugares" FromRole="tb_cat_lugar" ToRole="tb_cat_lugar1" />
+    <NavigationProperty Name="tb_cat_lugar2" Relationship="Self.FK_tb_cat_lugares_tb_cat_lugares" FromRole="tb_cat_lugar1" ToRole="tb_cat_lugar" />
+    <NavigationProperty Name="tb_msc_expediente" Relationship="Self.FK_tb_msc_expediente_tb_cat_lugares" FromRole="tb_cat_lugar" ToRole="tb_msc_expediente" />
+  </EntityType>
+  <EntityType Name="tb_msc_contrato">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_empleado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="periodo_prueba" Type="Int32" />
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <Property Name="id_cargo" Type="Int32" Nullable="false" />
+    <Property Name="id_nivel" Type="Int32" Nullable="false" />
+    <Property Name="pago_vacaciones" Type="Boolean" />
+    <Property Name="id_tipo_pago" Type="Int32" />
+    <Property Name="confirmado" Type="Boolean" />
+    <Property Name="id_contrato_sup" Type="Int32" />
+    <Property Name="activo" Type="Boolean" />
+    <NavigationProperty Name="tb_msc_empleado" Relationship="Self.FK_tb_msc_contrato_tb_msc_empleado" FromRole="tb_msc_contrato" ToRole="tb_msc_empleado" />
+  </EntityType>
+  <EntityType Name="tb_msc_empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_expediente" Type="Int32" Nullable="false" />
+    <Property Name="acciones_personal" Type="Boolean" />
+    <Property Name="id_jefe" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="firma" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="num_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_banco" Type="Int32" />
+    <Property Name="activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tb_msc_contrato" Relationship="Self.FK_tb_msc_contrato_tb_msc_empleado" FromRole="tb_msc_empleado" ToRole="tb_msc_contrato" />
+    <NavigationProperty Name="tb_msc_empleado1" Relationship="Self.FK_tb_msc_empleado_tb_msc_empleado" FromRole="tb_msc_empleado" ToRole="tb_msc_empleado1" />
+    <NavigationProperty Name="tb_msc_empleado2" Relationship="Self.FK_tb_msc_empleado_tb_msc_empleado" FromRole="tb_msc_empleado1" ToRole="tb_msc_empleado" />
+  </EntityType>
+  <EntityType Name="tb_msc_expediente">
+    <Key>
+      <PropertyRef Name="id_expediente" />
+    </Key>
+    <Property Name="id_expediente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nom2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="seguro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_estado_civil" Type="Int32" />
+    <Property Name="lugar_nacimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_lugar" Type="Int32" Nullable="false" />
+    <Property Name="id_nacionalidad" Type="Int32" />
+    <Property Name="id_nivel_acad" Type="Int32" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_profesion" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="peso" Type="Double" />
+    <Property Name="altura" Type="Double" />
+    <Property Name="senas_particulares" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_daem" Type="Int32" />
+    <Property Name="id_licencia" Type="Int32" />
+    <Property Name="id_vehiculo" Type="Int32" />
+    <Property Name="talla_pantalon" Type="Int32" />
+    <Property Name="talla_camisa" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="talla_botas" Type="Int32" />
+    <Property Name="id_acreditacion_daem" Type="Int32" />
+    <NavigationProperty Name="tb_cat_lugar" Relationship="Self.FK_tb_msc_expediente_tb_cat_lugares" FromRole="tb_msc_expediente" ToRole="tb_cat_lugar" />
+  </EntityType>
+  <EntityType Name="tb_cat_cargo_nivel">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+      <PropertyRef Name="id_nivel" />
+      <PropertyRef Name="cant_puesto" />
+    </Key>
+    <Property Name="id_cargo" Type="Int32" Nullable="false" />
+    <Property Name="id_nivel" Type="Int32" Nullable="false" />
+    <Property Name="cant_puesto" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tb_cat_lugares_tb_cat_lugares">
+    <End Role="tb_cat_lugar" Type="Self.tb_cat_lugar" Multiplicity="0..1" />
+    <End Role="tb_cat_lugar1" Type="Self.tb_cat_lugar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cat_lugar">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="tb_cat_lugar1">
+        <PropertyRef Name="id_lugar_sup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_expediente_tb_cat_lugares">
+    <End Role="tb_cat_lugar" Type="Self.tb_cat_lugar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_msc_expediente" Type="Self.tb_msc_expediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cat_lugar">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="tb_msc_expediente">
+        <PropertyRef Name="id_lugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_contrato_tb_msc_empleado">
+    <End Role="tb_msc_empleado" Type="Self.tb_msc_empleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_msc_contrato" Type="Self.tb_msc_contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_msc_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="tb_msc_contrato">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_empleado_tb_msc_empleado">
+    <End Role="tb_msc_empleado" Type="Self.tb_msc_empleado" Multiplicity="0..1" />
+    <End Role="tb_msc_empleado1" Type="Self.tb_msc_empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_msc_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="tb_msc_empleado1">
+        <PropertyRef Name="id_jefe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RHNOMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_cat_cargo" EntityType="Self.tb_cat_cargo" />
+    <EntitySet Name="tb_cat_lugar" EntityType="Self.tb_cat_lugar" />
+    <EntitySet Name="tb_msc_contrato" EntityType="Self.tb_msc_contrato" />
+    <EntitySet Name="tb_msc_empleado" EntityType="Self.tb_msc_empleado" />
+    <EntitySet Name="tb_msc_expediente" EntityType="Self.tb_msc_expediente" />
+    <EntitySet Name="tb_cat_cargo_nivel" EntityType="Self.tb_cat_cargo_nivel" />
+    <AssociationSet Name="FK_tb_cat_lugares_tb_cat_lugares" Association="Self.FK_tb_cat_lugares_tb_cat_lugares">
+      <End Role="tb_cat_lugar" EntitySet="tb_cat_lugar" />
+      <End Role="tb_cat_lugar1" EntitySet="tb_cat_lugar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_expediente_tb_cat_lugares" Association="Self.FK_tb_msc_expediente_tb_cat_lugares">
+      <End Role="tb_cat_lugar" EntitySet="tb_cat_lugar" />
+      <End Role="tb_msc_expediente" EntitySet="tb_msc_expediente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_contrato_tb_msc_empleado" Association="Self.FK_tb_msc_contrato_tb_msc_empleado">
+      <End Role="tb_msc_empleado" EntitySet="tb_msc_empleado" />
+      <End Role="tb_msc_contrato" EntitySet="tb_msc_contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_empleado_tb_msc_empleado" Association="Self.FK_tb_msc_empleado_tb_msc_empleado">
+      <End Role="tb_msc_empleado" EntitySet="tb_msc_empleado" />
+      <End Role="tb_msc_empleado1" EntitySet="tb_msc_empleado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

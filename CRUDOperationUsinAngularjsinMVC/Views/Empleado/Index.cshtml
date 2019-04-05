@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+<script src="~/Scripts/angular.js"></script>
+<script src="~/ScriptsApp/JsEmpleado.js"></script>
+<h2>Listado de empleado</h2>
+<div data-ng-app="JsEmpleado" data-ng-controller="empleadoCtrl" class="container">
+    <div class="col-md-10">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Cedula</th>
+                    <th>Sexo</th>
+                    <th>Lugar De Nacimiento</th>
+                    <th>Direccion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="emp in empleado">
+                    <td>{{emp.nom1}}</td>
+                    <td>{{emp.nom2}}</td>
+                    <td>{{emp.apellido1}}</td>
+                    <td>{{emp.apellido2}}</td>
+                    <td>{{emp.cedula}}</td>
+                    <td>{{emp.sexo}}</td>
+                    <td>{{emp.lugar_nacimiento}}</td>
+                    <td>{{emp.direccion}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RHNOMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_cat_cargo">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+    </Key>
+    <Property Name="id_cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="desc_cargo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="tipo_puesto" Type="varchar" MaxLength="50" />
+    <Property Name="periodo_prueba" Type="int" />
+    <Property Name="periodo_puesto" Type="int" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+    <Property Name="tipo_operativo" Type="bit" />
+    <Property Name="aut_acciones_p" Type="bit" />
+    <Property Name="comision" Type="bit" />
+    <Property Name="pago_vac_automatica" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RHNOM.dbo.tb_cat_cargo_nivel' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="tb_cat_cargo_nivel">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+      <PropertyRef Name="id_nivel" />
+      <PropertyRef Name="cant_puesto" />
+    </Key>
+    <Property Name="id_cargo" Type="int" Nullable="false" />
+    <Property Name="id_nivel" Type="int" Nullable="false" />
+    <Property Name="cant_puesto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_cat_lugar">
+    <Key>
+      <PropertyRef Name="id_lugar" />
+    </Key>
+    <Property Name="id_lugar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_lugar" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_lugar_sup" Type="int" />
+    <Property Name="tipo_lugar" Type="varchar" MaxLength="50" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_msc_contrato">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="fecha_ingreso" Type="date" Nullable="false" />
+    <Property Name="periodo_prueba" Type="int" />
+    <Property Name="id_estado" Type="int" Nullable="false" />
+    <Property Name="id_cargo" Type="int" Nullable="false" />
+    <Property Name="id_nivel" Type="int" Nullable="false" />
+    <Property Name="pago_vacaciones" Type="bit" />
+    <Property Name="id_tipo_pago" Type="int" />
+    <Property Name="confirmado" Type="bit" />
+    <Property Name="id_contrato_sup" Type="int" />
+    <Property Name="activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_msc_empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="id_expediente" Type="int" Nullable="false" />
+    <Property Name="acciones_personal" Type="bit" />
+    <Property Name="id_jefe" Type="varchar" MaxLength="5" />
+    <Property Name="foto" Type="image" />
+    <Property Name="firma" Type="image" />
+    <Property Name="num_cuenta" Type="varchar" MaxLength="50" />
+    <Property Name="id_banco" Type="int" />
+    <Property Name="activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_msc_expediente">
+    <Key>
+      <PropertyRef Name="id_expediente" />
+    </Key>
+    <Property Name="id_expediente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nom2" Type="varchar" MaxLength="50" />
+    <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellido2" Type="varchar" MaxLength="50" />
+    <Property Name="cedula" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="sexo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="seguro" Type="varchar" MaxLength="50" />
+    <Property Name="id_estado_civil" Type="int" />
+    <Property Name="lugar_nacimiento" Type="varchar" MaxLength="50" />
+    <Property Name="id_lugar" Type="int" Nullable="false" />
+    <Property Name="id_nacionalidad" Type="int" />
+    <Property Name="id_nivel_acad" Type="int" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_profesion" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="peso" Type="float" />
+    <Property Name="altura" Type="float" />
+    <Property Name="senas_particulares" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_nacimiento" Type="date" Nullable="false" />
+    <Property Name="id_daem" Type="int" />
+    <Property Name="id_licencia" Type="int" />
+    <Property Name="id_vehiculo" Type="int" />
+    <Property Name="talla_pantalon" Type="int" />
+    <Property Name="talla_camisa" Type="varchar" MaxLength="5" />
+    <Property Name="talla_botas" Type="int" />
+    <Property Name="id_acreditacion_daem" Type="int" />
+  </EntityType>
+  <Association Name="FK_tb_cat_lugares_tb_cat_lugares">
+    <End Role="tb_cat_lugar" Type="Self.tb_cat_lugar" Multiplicity="0..1" />
+    <End Role="tb_cat_lugar1" Type="Self.tb_cat_lugar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cat_lugar">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="tb_cat_lugar1">
+        <PropertyRef Name="id_lugar_sup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_contrato_tb_msc_empleado">
+    <End Role="tb_msc_empleado" Type="Self.tb_msc_empleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_msc_contrato" Type="Self.tb_msc_contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_msc_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="tb_msc_contrato">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_empleado_tb_msc_empleado">
+    <End Role="tb_msc_empleado" Type="Self.tb_msc_empleado" Multiplicity="0..1" />
+    <End Role="tb_msc_empleado1" Type="Self.tb_msc_empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_msc_empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="tb_msc_empleado1">
+        <PropertyRef Name="id_jefe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_msc_expediente_tb_cat_lugares">
+    <End Role="tb_cat_lugar" Type="Self.tb_cat_lugar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tb_msc_expediente" Type="Self.tb_msc_expediente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_cat_lugar">
+        <PropertyRef Name="id_lugar" />
+      </Principal>
+      <Dependent Role="tb_msc_expediente">
+        <PropertyRef Name="id_lugar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RHNOMModelStoreContainer">
+    <EntitySet Name="tb_cat_cargo" EntityType="Self.tb_cat_cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cat_lugar" EntityType="Self.tb_cat_lugar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_msc_contrato" EntityType="Self.tb_msc_contrato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_msc_empleado" EntityType="Self.tb_msc_empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_msc_expediente" EntityType="Self.tb_msc_expediente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cat_cargo_nivel" EntityType="Self.tb_cat_cargo_nivel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_cat_cargo_nivel].[id_cargo] AS [id_cargo], 
+    [tb_cat_cargo_nivel].[id_nivel] AS [id_nivel], 
+    [tb_cat_cargo_nivel].[cant_puesto] AS [cant_puesto]
+    FROM [dbo].[tb_cat_cargo_nivel] AS [tb_cat_cargo_nivel]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tb_cat_lugares_tb_cat_lugares" Association="Self.FK_tb_cat_lugares_tb_cat_lugares">
+      <End Role="tb_cat_lugar" EntitySet="tb_cat_lugar" />
+      <End Role="tb_cat_lugar1" EntitySet="tb_cat_lugar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_contrato_tb_msc_empleado" Association="Self.FK_tb_msc_contrato_tb_msc_empleado">
+      <End Role="tb_msc_empleado" EntitySet="tb_msc_empleado" />
+      <End Role="tb_msc_contrato" EntitySet="tb_msc_contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_empleado_tb_msc_empleado" Association="Self.FK_tb_msc_empleado_tb_msc_empleado">
+      <End Role="tb_msc_empleado" EntitySet="tb_msc_empleado" />
+      <End Role="tb_msc_empleado1" EntitySet="tb_msc_empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_msc_expediente_tb_cat_lugares" Association="Self.FK_tb_msc_expediente_tb_cat_lugares">
+      <End Role="tb_cat_lugar" EntitySet="tb_cat_lugar" />
+      <End Role="tb_msc_expediente" EntitySet="tb_msc_expediente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
